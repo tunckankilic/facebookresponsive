@@ -1,7 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
+import 'package:facebookresponsive/config/palette.dart';
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -9,23 +12,23 @@ class CustomAppBar extends StatelessWidget {
   final List<IconData> icons;
   final int selectedIndex;
   final Function(int) onTap;
-
   const CustomAppBar({
-    Key key,
-    @required this.currentUser,
-    @required this.icons,
-    @required this.selectedIndex,
-    @required this.onTap,
+    Key? key,
+    required this.currentUser,
+    required this.icons,
+    required this.selectedIndex,
+    required this.onTap,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       height: 65.0,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             color: Colors.black12,
             offset: Offset(0, 2),
@@ -36,10 +39,10 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          const Expanded(
             child: Text(
               'facebook',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Palette.facebookBlue,
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
@@ -47,7 +50,7 @@ class CustomAppBar extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: double.infinity,
             width: 600.0,
             child: CustomTabBar(
@@ -66,12 +69,12 @@ class CustomAppBar extends StatelessWidget {
                 CircleButton(
                   icon: Icons.search,
                   iconSize: 30.0,
-                  onPressed: () => print('Search'),
+                  onPressed: () => log('Search'),
                 ),
                 CircleButton(
                   icon: MdiIcons.facebookMessenger,
                   iconSize: 30.0,
-                  onPressed: () => print('Messenger'),
+                  onPressed: () => log('Messenger'),
                 ),
               ],
             ),

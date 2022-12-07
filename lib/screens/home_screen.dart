@@ -1,11 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
-import 'package:flutter_facebook_responsive_ui/data/data.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:facebookresponsive/config/palette.dart';
+import 'package:facebookresponsive/data/data.dart';
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -38,10 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class _HomeScreenMobile extends StatelessWidget {
   final TrackingScrollController scrollController;
-
   const _HomeScreenMobile({
-    Key key,
-    @required this.scrollController,
+    Key? key,
+    required this.scrollController,
   }) : super(key: key);
 
   @override
@@ -50,14 +55,16 @@ class _HomeScreenMobile extends StatelessWidget {
       controller: scrollController,
       slivers: [
         SliverAppBar(
-          brightness: Brightness.light,
           backgroundColor: Colors.white,
-          title: Text(
+          title: const Text(
             'facebook',
-            style: const TextStyle(
+            style: TextStyle(
               color: Palette.facebookBlue,
               fontSize: 28.0,
               fontWeight: FontWeight.bold,
+              //Helps to fix the distance of two letters
+              //minus minimize the distance "-"
+              //plus expands the distance "+"
               letterSpacing: -1.2,
             ),
           ),
@@ -67,16 +74,17 @@ class _HomeScreenMobile extends StatelessWidget {
             CircleButton(
               icon: Icons.search,
               iconSize: 30.0,
-              onPressed: () => print('Search'),
+              onPressed: () => log("search"),
             ),
             CircleButton(
               icon: MdiIcons.facebookMessenger,
               iconSize: 30.0,
-              onPressed: () => print('Messenger'),
+              onPressed: () => log("print"),
             ),
           ],
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: CreatePostContainer(currentUser: currentUser),
         ),
         SliverPadding(
@@ -110,28 +118,27 @@ class _HomeScreenMobile extends StatelessWidget {
 
 class _HomeScreenDesktop extends StatelessWidget {
   final TrackingScrollController scrollController;
-
   const _HomeScreenDesktop({
-    Key key,
-    @required this.scrollController,
+    Key? key,
+    required this.scrollController,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Flexible(
+        const Flexible(
           flex: 2,
           child: Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0),
               child: MoreOptionsList(currentUser: currentUser),
             ),
           ),
         ),
         const Spacer(),
-        Container(
+        SizedBox(
           width: 600.0,
           child: CustomScrollView(
             controller: scrollController,
@@ -145,7 +152,7 @@ class _HomeScreenDesktop extends StatelessWidget {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: CreatePostContainer(currentUser: currentUser),
               ),
               SliverPadding(

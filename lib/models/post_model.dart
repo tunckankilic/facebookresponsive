@@ -1,5 +1,5 @@
-import 'package:meta/meta.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
+
+import 'package:facebookresponsive/models/models_shelf.dart';
 
 class Post {
   final User user;
@@ -11,12 +11,12 @@ class Post {
   final int shares;
 
   const Post({
-    @required this.user,
-    @required this.caption,
-    @required this.timeAgo,
-    @required this.imageUrl,
-    @required this.likes,
-    @required this.comments,
-    @required this.shares,
+    required this.user,
+    required this.caption,
+    required this.timeAgo,
+    required this.imageUrl,
+    required this.likes,
+    required this.comments,
+    required this.shares,
   });
 }

@@ -1,17 +1,19 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebookresponsive/config/palette.dart';
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 
 class Stories extends StatelessWidget {
   final User currentUser;
   final List<Story> stories;
 
   const Stories({
-    Key key,
-    @required this.currentUser,
-    @required this.stories,
+    Key? key,
+    required this.currentUser,
+    required this.stories,
   }) : super(key: key);
 
   @override
@@ -49,11 +51,11 @@ class Stories extends StatelessWidget {
 
 class _StoryCard extends StatelessWidget {
   final bool isAddStory;
-  final User currentUser;
-  final Story story;
+  final User? currentUser;
+  final Story? story;
 
   const _StoryCard({
-    Key key,
+    Key? key,
     this.isAddStory = false,
     this.currentUser,
     this.story,
@@ -66,7 +68,7 @@ class _StoryCard extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(12.0),
           child: CachedNetworkImage(
-            imageUrl: isAddStory ? currentUser.imageUrl : story.imageUrl,
+            imageUrl: isAddStory ? currentUser!.imageUrl : story!.imageUrl,
             height: double.infinity,
             width: 110.0,
             fit: BoxFit.cover,
@@ -96,7 +98,7 @@ class _StoryCard extends StatelessWidget {
               ? Container(
                   height: 40.0,
                   width: 40.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
                   ),
@@ -105,12 +107,12 @@ class _StoryCard extends StatelessWidget {
                     icon: const Icon(Icons.add),
                     iconSize: 30.0,
                     color: Palette.facebookBlue,
-                    onPressed: () => print('Add to Story'),
+                    onPressed: () => log('Add to Story'),
                   ),
                 )
               : ProfileAvatar(
-                  imageUrl: story.user.imageUrl,
-                  hasBorder: !story.isViewed,
+                  imageUrl: story!.user.imageUrl,
+                  hasBorder: !story!.isViewed,
                 ),
         ),
         Positioned(
@@ -118,7 +120,7 @@ class _StoryCard extends StatelessWidget {
           left: 8.0,
           right: 8.0,
           child: Text(
-            isAddStory ? 'Add to Story' : story.user.name,
+            isAddStory ? 'Add to Story' : story!.user.name,
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

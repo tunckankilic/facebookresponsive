@@ -1,16 +1,18 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebookresponsive/config/palette.dart';
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class PostContainer extends StatelessWidget {
   final Post post;
 
   const PostContainer({
-    Key key,
-    @required this.post,
+    Key? key,
+    required this.post,
   }) : super(key: key);
 
   @override
@@ -38,18 +40,14 @@ class PostContainer extends StatelessWidget {
                   _PostHeader(post: post),
                   const SizedBox(height: 4.0),
                   Text(post.caption),
-                  post.imageUrl != null
-                      ? const SizedBox.shrink()
-                      : const SizedBox(height: 6.0),
+                  const SizedBox.shrink()
                 ],
               ),
             ),
-            post.imageUrl != null
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: CachedNetworkImage(imageUrl: post.imageUrl),
-                  )
-                : const SizedBox.shrink(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: CachedNetworkImage(imageUrl: post.imageUrl),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: _PostStats(post: post),
@@ -65,8 +63,8 @@ class _PostHeader extends StatelessWidget {
   final Post post;
 
   const _PostHeader({
-    Key key,
-    @required this.post,
+    Key? key,
+    required this.post,
   }) : super(key: key);
 
   @override
@@ -106,7 +104,7 @@ class _PostHeader extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(Icons.more_horiz),
-          onPressed: () => print('More'),
+          onPressed: () => log('More'),
         ),
       ],
     );
@@ -117,8 +115,8 @@ class _PostStats extends StatelessWidget {
   final Post post;
 
   const _PostStats({
-    Key key,
-    @required this.post,
+    Key? key,
+    required this.post,
   }) : super(key: key);
 
   @override
@@ -129,7 +127,7 @@ class _PostStats extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(4.0),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Palette.facebookBlue,
                 shape: BoxShape.circle,
               ),
@@ -173,7 +171,7 @@ class _PostStats extends StatelessWidget {
                 size: 20.0,
               ),
               label: 'Like',
-              onTap: () => print('Like'),
+              onTap: () => log('Like'),
             ),
             _PostButton(
               icon: Icon(
@@ -182,7 +180,7 @@ class _PostStats extends StatelessWidget {
                 size: 20.0,
               ),
               label: 'Comment',
-              onTap: () => print('Comment'),
+              onTap: () => log('Comment'),
             ),
             _PostButton(
               icon: Icon(
@@ -191,7 +189,7 @@ class _PostStats extends StatelessWidget {
                 size: 25.0,
               ),
               label: 'Share',
-              onTap: () => print('Share'),
+              onTap: () => log('Share'),
             )
           ],
         ),
@@ -206,10 +204,10 @@ class _PostButton extends StatelessWidget {
   final Function onTap;
 
   const _PostButton({
-    Key key,
-    @required this.icon,
-    @required this.label,
-    @required this.onTap,
+    Key? key,
+    required this.icon,
+    required this.label,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -218,7 +216,7 @@ class _PostButton extends StatelessWidget {
       child: Material(
         color: Colors.white,
         child: InkWell(
-          onTap: onTap,
+          onTap: () => onTap,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             height: 25.0,

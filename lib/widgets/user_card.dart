@@ -1,13 +1,14 @@
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
+
 
 class UserCard extends StatelessWidget {
   final User user;
 
   const UserCard({
-    Key key,
-    @required this.user,
+    Key? key,
+    required this.user,
   }) : super(key: key);
 
   @override

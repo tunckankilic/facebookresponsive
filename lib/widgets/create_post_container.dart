@@ -1,13 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
+
+import 'package:facebookresponsive/models/models_shelf.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
-
   const CreatePostContainer({
-    Key key,
-    @required this.currentUser,
+    Key? key,
+    required this.currentUser,
   }) : super(key: key);
 
   @override
@@ -28,7 +31,7 @@ class CreatePostContainer extends StatelessWidget {
               children: [
                 ProfileAvatar(imageUrl: currentUser.imageUrl),
                 const SizedBox(width: 8.0),
-                Expanded(
+                const Expanded(
                   child: TextField(
                     decoration: InputDecoration.collapsed(
                       hintText: 'What\'s on your mind?',
@@ -38,36 +41,36 @@ class CreatePostContainer extends StatelessWidget {
               ],
             ),
             const Divider(height: 10.0, thickness: 0.5),
-            Container(
+            SizedBox(
               height: 40.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  FlatButton.icon(
-                    onPressed: () => print('Live'),
+                  TextButton.icon(
+                    onPressed: () => log('Live'),
                     icon: const Icon(
                       Icons.videocam,
                       color: Colors.red,
                     ),
-                    label: Text('Live'),
+                    label: const Text('Live'),
                   ),
                   const VerticalDivider(width: 8.0),
-                  FlatButton.icon(
-                    onPressed: () => print('Photo'),
+                  TextButton.icon(
+                    onPressed: () => log('Photo'),
                     icon: const Icon(
                       Icons.photo_library,
                       color: Colors.green,
                     ),
-                    label: Text('Photo'),
+                    label: const Text('Photo'),
                   ),
                   const VerticalDivider(width: 8.0),
-                  FlatButton.icon(
-                    onPressed: () => print('Room'),
+                  TextButton.icon(
+                    onPressed: () => log('Room'),
                     icon: const Icon(
                       Icons.video_call,
                       color: Colors.purpleAccent,
                     ),
-                    label: Text('Room'),
+                    label: const Text('Room'),
                   ),
                 ],
               ),

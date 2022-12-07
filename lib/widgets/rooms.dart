@@ -1,14 +1,16 @@
+import 'dart:developer';
+
+import 'package:facebookresponsive/config/palette.dart';
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 
 class Rooms extends StatelessWidget {
   final List<User> onlineUsers;
 
   const Rooms({
-    Key key,
-    @required this.onlineUsers,
+    Key? key,
+    required this.onlineUsers,
   }) : super(key: key);
 
   @override
@@ -55,19 +57,21 @@ class Rooms extends StatelessWidget {
 class _CreateRoomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
-      onPressed: () => print('Create Room'),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
+    return OutlinedButton(
+      onPressed: () => log('Create Room'),
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        primary: Colors.white,
+        onSurface: Palette.facebookBlue,
+        //  BorderSide(
+        //   width: 3.0,
+        //   color: Colors.blueAccent[100]!,
+        // ),
       ),
-      color: Colors.white,
-      borderSide: BorderSide(
-        width: 3.0,
-        color: Colors.blueAccent[100],
-      ),
-      textColor: Palette.facebookBlue,
       child: Row(
-        children: [
+        children: const [
           // ShaderMask(
           //   shaderCallback: (rect) =>
           //       Palette.createRoomGradient.createShader(rect),
@@ -82,7 +86,7 @@ class _CreateRoomButton extends StatelessWidget {
             size: 35.0,
             color: Colors.purple,
           ),
-          const SizedBox(width: 4.0),
+          SizedBox(width: 4.0),
           Text('Create\nRoom'),
         ],
       ),

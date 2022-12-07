@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebookresponsive/config/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
 
 class ProfileAvatar extends StatelessWidget {
   final String imageUrl;
@@ -8,8 +8,8 @@ class ProfileAvatar extends StatelessWidget {
   final bool hasBorder;
 
   const ProfileAvatar({
-    Key key,
-    @required this.imageUrl,
+    Key? key,
+    required this.imageUrl,
     this.isActive = false,
     this.hasBorder = false,
   }) : super(key: key);

@@ -1,19 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:facebookresponsive/models/models_shelf.dart';
+import 'package:facebookresponsive/widgets/widgets_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 
 class ContactsList extends StatelessWidget {
   final List<User> users;
-
   const ContactsList({
-    Key key,
-    @required this.users,
+    Key? key,
+    required this.users,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 280.0),
+      constraints: const BoxConstraints(maxWidth: 280.0),
       child: Column(
         children: [
           Row(

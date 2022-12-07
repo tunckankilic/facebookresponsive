@@ -1,17 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:facebookresponsive/config/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/config/palette.dart';
 
 class CustomTabBar extends StatelessWidget {
   final List<IconData> icons;
   final int selectedIndex;
   final Function(int) onTap;
   final bool isBottomIndicator;
-
   const CustomTabBar({
-    Key key,
-    @required this.icons,
-    @required this.selectedIndex,
-    @required this.onTap,
+    Key? key,
+    required this.icons,
+    required this.selectedIndex,
+    required this.onTap,
     this.isBottomIndicator = false,
   }) : super(key: key);
 
@@ -21,13 +21,13 @@ class CustomTabBar extends StatelessWidget {
       indicatorPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
         border: isBottomIndicator
-            ? Border(
-                bottom: BorderSide(
+            ? const Border(
+                bottom:  BorderSide(
                   color: Palette.facebookBlue,
                   width: 3.0,
                 ),
               )
-            : Border(
+            : const Border(
                 top: BorderSide(
                   color: Palette.facebookBlue,
                   width: 3.0,
