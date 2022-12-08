@@ -12,6 +12,8 @@ class Responsive extends StatelessWidget {
     required this.desktop,
   }) : super(key: key);
 
+  /* Ekran ölçeğinin belirlenme şartı */
+
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 800;
 
@@ -24,6 +26,7 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /* Ekran ölçeğine göre gösterilecek yerleşim için algoritma kurulması */
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 1200) {

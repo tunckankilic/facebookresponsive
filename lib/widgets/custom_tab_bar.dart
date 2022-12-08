@@ -17,6 +17,8 @@ class CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //DefaultTabController zorunlu parametresidir
+    //Eklecek olan sekmelerin sembollerinin bulunduğu alanı gösterir
     return TabBar(
       indicatorPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
@@ -38,6 +40,7 @@ class CustomTabBar extends StatelessWidget {
           .asMap()
           .map((i, e) => MapEntry(
                 i,
+                //TabBar seçimlerinin zorunlu gösterimi
                 Tab(
                   icon: Icon(
                     e,

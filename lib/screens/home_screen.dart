@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //Aktif değişimde ekran boyut kontrolü sağlayan kontrolcü
   final TrackingScrollController _trackingScrollController =
       TrackingScrollController();
 
@@ -54,6 +55,7 @@ class _HomeScreenMobile extends StatelessWidget {
     return CustomScrollView(
       controller: scrollController,
       slivers: [
+        //Özelleştirilmiş ayarlı AppBar widget
         SliverAppBar(
           backgroundColor: Colors.white,
           title: const Text(
@@ -84,6 +86,7 @@ class _HomeScreenMobile extends StatelessWidget {
           ],
           systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
+        // Tek bir childa uygun Sliver Kapsayıcısı
         const SliverToBoxAdapter(
           child: CreatePostContainer(currentUser: currentUser),
         ),
